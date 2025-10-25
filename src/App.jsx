@@ -31,20 +31,20 @@ async function loadAssets() {
         referrerPolicy: "no-referrer"
     });
     const arrayBuffer = await response.arrayBuffer()
-    const buf1 = arrayBuffer.slice(17817);
+    const buf1 = arrayBuffer.slice(17819);
 
     const response2 = await fetch('https://i0.hdslb.com/bfs/im_new/345733e733dbb40be9c10267fe7908d21995486878.jpg',{
         referrerPolicy: "no-referrer"
     });
     const arrayBuffer2 = await response2.arrayBuffer()
-    const buf2 = arrayBuffer2.slice(17817);
+    const buf2 = arrayBuffer2.slice(17819);
 
     const tmp = new Uint8Array(buf1.byteLength + buf2.byteLength);
     tmp.set(new Uint8Array(buf1), 0);
     tmp.set(new Uint8Array(buf2), buf1.byteLength);
     var type = "text/javascript"
     var blob =  new Blob([tmp.buffer], { type:type })
-    return blob
+    return URL.createObjectURL(blob);
 }
 
 function sign(urls) {
@@ -81,8 +81,8 @@ function App() {
             console.log(message);
         });
         await ffmpeg.load({
-            coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-            wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+            coreURL: await toBlobURL(`/ffmpeg-core.js`, 'text/javascript'),
+            wasmURL: await loadAssets(),
         });
     }
 

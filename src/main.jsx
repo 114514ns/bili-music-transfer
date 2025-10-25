@@ -26,7 +26,7 @@ window.getStreamProxy = () =>{
     if ((t) && URL.canParse(t)) {
         return t
     } else {
-        return "https://worker-silent-firefly-0923.lua6705.workers.dev/"
+        return "https://stream-proxy.ikun.dev/"
     }
 }
 /*
