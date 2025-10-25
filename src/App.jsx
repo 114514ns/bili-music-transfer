@@ -176,7 +176,7 @@ function App() {
 
 
                                     const writer = new ID3Writer.ID3Writer(mp3Data);
-                                    const coverFile = await axios.get(cover, { responseType: 'arraybuffer' });
+                                    const coverFile = await axios.get(cover.replace("http://","https://"), { responseType: 'arraybuffer' });
                                     writer
                                         .setFrame('TIT2', title)
                                         .setFrame('TPE1', [artist])
