@@ -28,8 +28,8 @@ function AccountForm(props) {
                 cookie
             }
         }).then((response) => {
-            setLogged(response.data.data.account !== null);
-            if (response.data.data.account !== null) {
+            setLogged(response.data.data.profile !== null);
+            if (response.data.data.profile !== null) {
                 setProfile(response.data.data.profile)
                 localStorage.setItem("face",response.data.data.profile.avatarUrl)
             }
