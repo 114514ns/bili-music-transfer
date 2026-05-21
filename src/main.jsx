@@ -13,6 +13,14 @@ window.getBilibiliApi = () =>{
         return "https://bili-api.ikun.dev"
     }
 }
+window.getAppBilibiliApi = () =>{
+    var t = localStorage.getItem("app-bilibili-api");
+    if ((t) && URL.canParse(t)) {
+        return t
+    } else {
+        return "https://app-bili-api.ikun.dev"
+    }
+}
 window.getMusicApi = () =>{
     var t = localStorage.getItem("music-api");
     if ((t) && URL.canParse(t)) {

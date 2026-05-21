@@ -69,6 +69,7 @@ function App() {
     const [bv, setBv] = useState('BV1GHxKzXEBh');
     const [artist,setArtist] = useState('');
     const [cover,setCover] = useState('');
+    const [av,setAv] = useState('');
     const [cid,setCid] = useState('');
     const ffmpegRef = React.useRef(new FFmpeg());
 
@@ -121,6 +122,7 @@ function App() {
                             setCover(response.data.data.View.pic)
                             setArtist(response.data.data.Card.card.name)
                             setCid(response.data.data.View.cid)
+                            setAv(response.data.data.View.aid)
                         })
                     }}>
                         Parse
@@ -149,7 +151,7 @@ function App() {
                                 try {
                                     setProgress(0);
                                     const response = await axios.get(
-                                        sign(`${getBilibiliApi()}/x/player/wbi/playurl?bvid=${bv}&isGaiaAvoided=true&cid=${cid}&qn=32&try_look=1&fnval=4048`)
+                                        sign(`${getAppBilibiliApi()}/x/v2/car/player/playurl?aid=${av}&channel=website&cid=${cid}&otype=av&platform=android&qn=32`)
                                     );
                                     const audioArray = response.data.data.dash.audio;
                                     const audioUrl = audioArray[audioArray.length - 1].baseUrl;
